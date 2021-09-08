@@ -9,6 +9,7 @@ export default class MyDocuments extends Document {
           <meta charSet="UTF-8" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
           <body>
             <Main />
             <NextScript />
