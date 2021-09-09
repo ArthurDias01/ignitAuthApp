@@ -3,12 +3,13 @@ import { useAuth } from "../contexts/AuthContext"
 import { setupAPIClient } from "../services/api";
 import { api } from "../services/apiClient";
 import { withSSRAuth } from "../utils/withSSRAuth";
+import { Can } from '../components/Can'
 
 
 export default function Dashboard() {
 
 
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     api.get('/me')
@@ -16,7 +17,15 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <h1 style={{ font: 'sans-serif', fontSize: '2rem' }}>{`Dashboard ${user?.email}`}</h1>
+    <>
+      <h1 style={{ font: 'sans-serif', fontSize: '2rem' }}>{`Dashboard ${user?.email}`}</h1>
+
+      <button onClick={signOut}>Sign Out</button>
+
+      <Can permissions={['metrics.list']}>
+        <h2>Métricas</h2>
+      </Can>
+    </>
   )
 }
 
